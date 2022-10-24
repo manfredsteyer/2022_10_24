@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { RouterLinkWithHref, RouterOutlet } from "@angular/router";
 
-// import { CheckinDomainModule } from '@nx-example/checkin/domain';
+import { UpgradeTicketFacade } from '@nx-example/upgrade/domain';
 
 @Component({
   standalone: true,
