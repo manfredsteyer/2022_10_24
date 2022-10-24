@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CheckinFacade } from '@nx-example/luggage/domain';
 
+import { BookingSlice } from '@nx-example/booking/domain';
+
+
 @Component({
   standalone: true,
   imports: [CommonModule],

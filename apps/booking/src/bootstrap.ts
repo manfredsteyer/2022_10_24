@@ -1,0 +1,50 @@
+import { LayoutModule } from '@angular/cdk/layout';
+import { provideHttpClient, withInterceptors, withLegacyInterceptors, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { enableProdMode, importProvidersFrom } from '@angular/core';
+import { bootstrapApplication } from '@angular/platform-browser';
+import { PreloadAllModules, provideRouter, withPreloading } from '@angular/router';
+import { provideEffects } from '@ngrx/effects';
+import { provideStore } from '@ngrx/store';
+import { provideStoreDevtools } from '@ngrx/store-devtools';
+import { reducer } from './app/+state';
+import { AppComponent } from './app/app.component';
+import { APP_ROUTES } from './app/app.routes';
+import { provideAnimations } from '@angular/platform-browser/animations';
+
+import { environment } from './environments/environment';
+import { authInterceptor } from './utils/auth.interceptor';
+
+if (environment.production) {
+  enableProdMode();
+}
+
+bootstrapApplication(AppComponent, {
+  providers: [
+
+    // ng 15.rc0
+    provideHttpClient(
+      withInterceptors([authInterceptor]), 
+      withLegacyInterceptors()
+    ),
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: ...,
+    //   multi: true
+
+    // },
+
+    provideRouter(
+      APP_ROUTES, 
+      // withPreloading(PreloadAllModules)
+    ),
+    
+    // NGRX
+    provideStore(reducer),
+    provideEffects([]),
+    provideStoreDevtools(),
+
+    provideAnimations(),
+    
+    importProvidersFrom(LayoutModule),
+  ]
+});

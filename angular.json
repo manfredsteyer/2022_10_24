@@ -15,6 +15,10 @@
     "my-plugin": "libs/my-plugin",
     "my-plugin-e2e": "apps/my-plugin-e2e",
     "shared-ui-shell": "libs/shared/ui-shell",
-    "shared-util-common": "libs/shared/util-common"
+    "shared-util-common": "libs/shared/util-common",
+    "upgrade": "apps/upgrade",
+    "upgrade-domain": "libs/upgrade/domain",
+    "upgrade-e2e": "apps/upgrade-e2e",
+    "upgrade-feature-upgrade-ticket": "libs/upgrade/feature-upgrade-ticket"
   }
 }
