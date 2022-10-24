@@ -6,9 +6,7 @@
   "targets": {
     "build": {
       "executor": "@nrwl/angular:webpack-browser",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/luggage",
         "index": "apps/luggage/src/index.html",
@@ -16,13 +14,8 @@
         "polyfills": "apps/luggage/src/polyfills.ts",
         "tsConfig": "apps/luggage/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": [
-          "apps/luggage/src/favicon.ico",
-          "apps/luggage/src/assets"
-        ],
-        "styles": [
-          "apps/luggage/src/styles.scss"
-        ],
+        "assets": ["apps/luggage/src/favicon.ico", "apps/luggage/src/assets"],
+        "styles": ["apps/luggage/src/styles.scss"],
         "scripts": [],
         "customWebpackConfig": {
           "path": "apps/luggage/webpack.config.js"
@@ -91,25 +84,17 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": [
-          "apps/luggage/**/*.ts",
-          "apps/luggage/**/*.html"
-        ]
+        "lintFilePatterns": ["apps/luggage/**/*.ts", "apps/luggage/**/*.html"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/apps/luggage"
-      ],
+      "outputs": ["coverage/apps/luggage"],
       "options": {
         "jestConfig": "apps/luggage/jest.config.ts",
         "passWithNoTests": true
       }
     }
   },
-  "tags": [
-    "domain:luggage",
-    "type:app"
-  ]
+  "tags": ["domain:luggage", "type:app"]
 }

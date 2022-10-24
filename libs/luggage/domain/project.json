@@ -6,9 +6,7 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/libs/luggage/domain"
-      ],
+      "outputs": ["coverage/libs/luggage/domain"],
       "options": {
         "jestConfig": "libs/luggage/domain/jest.config.ts",
         "passWithNoTests": true
@@ -24,8 +22,5 @@
       }
     }
   },
-  "tags": [
-    "domain:luggage",
-    "type:domain-logic"
-  ]
+  "tags": ["domain:luggage", "type:domain-logic"]
 }
