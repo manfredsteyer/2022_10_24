@@ -1,5 +1,5 @@
 import { LayoutModule } from '@angular/cdk/layout';
-import { provideHttpClient, withInterceptors, withLegacyInterceptors, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { enableProdMode, importProvidersFrom } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { PreloadAllModules, provideRouter, withPreloading } from '@angular/router';
@@ -12,7 +12,6 @@ import { APP_ROUTES } from './app/app.routes';
 import { provideAnimations } from '@angular/platform-browser/animations';
 
 import { environment } from './environments/environment';
-import { authInterceptor } from './utils/auth.interceptor';
 
 if (environment.production) {
   enableProdMode();
@@ -21,11 +20,7 @@ if (environment.production) {
 bootstrapApplication(AppComponent, {
   providers: [
 
-    // ng 15.rc0
-    provideHttpClient(
-      withInterceptors([authInterceptor]), 
-      withLegacyInterceptors()
-    ),
+    importProvidersFrom(HttpClientModule),
     // {
     //   provide: HTTP_INTERCEPTORS,
     //   useClass: ...,
