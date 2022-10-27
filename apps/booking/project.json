@@ -6,9 +6,7 @@
   "targets": {
     "build": {
       "executor": "@nrwl/angular:webpack-browser",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/booking",
         "index": "apps/booking/src/index.html",
@@ -16,10 +14,7 @@
         "polyfills": "apps/booking/src/polyfills.ts",
         "tsConfig": "apps/booking/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": [
-          "apps/booking/src/favicon.ico",
-          "apps/booking/src/assets"
-        ],
+        "assets": ["apps/booking/src/favicon.ico", "apps/booking/src/assets"],
         "styles": [
           "node_modules/@angular-architects/paper-design/assets/css/bootstrap.css",
           "node_modules/@angular-architects/paper-design/assets/scss/paper-dashboard.scss",
@@ -94,25 +89,17 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": [
-          "apps/booking/**/*.ts",
-          "apps/booking/**/*.html"
-        ]
+        "lintFilePatterns": ["apps/booking/**/*.ts", "apps/booking/**/*.html"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/apps/booking"
-      ],
+      "outputs": ["coverage/apps/booking"],
       "options": {
         "jestConfig": "apps/booking/jest.config.ts",
         "passWithNoTests": true
       }
     }
   },
-  "tags": [
-    "domain:booking",
-    "type:app"
-  ]
+  "tags": ["domain:booking", "type:app"]
 }
