@@ -1,5 +1,5 @@
-import { provideHttpClient } from '@angular/common/http';
-import { enableProdMode } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { enableProdMode, importProvidersFrom } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { bootstrapApplication } from '@angular/platform-browser';
 
@@ -13,7 +13,7 @@ if (environment.production) {
 
 bootstrapApplication(AppComponent, {
   providers: [
-    provideHttpClient(),
+    importProvidersFrom(HttpClientModule),
     provideRouter(APP_ROUTES)
   ],
 });
