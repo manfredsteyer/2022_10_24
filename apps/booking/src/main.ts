@@ -1,40 +1,6 @@
-import { LayoutModule } from '@angular/cdk/layout';
-import { HttpClientModule } from '@angular/common/http';
-import { enableProdMode, importProvidersFrom } from '@angular/core';
-import { bootstrapApplication } from '@angular/platform-browser';
-import { provideAnimations } from '@angular/platform-browser/animations';
+import { loadManifest } from '@angular-architects/module-federation';
 
-import { PreloadAllModules, provideRouter, withPreloading } from '@angular/router';
-import { provideEffects } from '@ngrx/effects';
-import { provideStore } from '@ngrx/store';
-import { provideStoreDevtools } from '@ngrx/store-devtools';
-
-import { reducer } from './app/+state';
-import { AppComponent } from './app/app.component';
-import { APP_ROUTES } from './app/app.routes';
-
-import { environment } from './environments/environment';
-
-if (environment.production) {
-  enableProdMode();
-}
-
-bootstrapApplication(AppComponent, {
-  providers: [
-    
-    // 15: provideHttpClient()
-    importProvidersFrom(HttpClientModule),
-
-    provideRouter(
-      APP_ROUTES, 
-      withPreloading(PreloadAllModules)
-    ),
-    
-    provideStore(reducer),
-    provideEffects([]),
-    provideStoreDevtools(),
-    
-    provideAnimations(),
-    importProvidersFrom(LayoutModule),
-  ]
-});
+loadManifest("/assets/mf.manifest.json")
+  .catch(err => console.error(err))
+  .then(_ => import('./bootstrap'))
+  .catch(err => console.error(err));
