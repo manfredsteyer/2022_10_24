@@ -9,6 +9,7 @@ export const FLIGHT_BOOKING_ROUTES: Routes = [{
     path: '',
     component: FlightBookingComponent,
     providers: [
+        // providedIn: 'root'
         provideBookingDomain()
     ],
     children: [

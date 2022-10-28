@@ -1,11 +1,32 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { AsyncPipe } from '@angular/common';
 import { Component, Inject } from '@angular/core';
+import { RouterLink, RouterLinkWithHref } from '@angular/router';
 import { map, shareReplay } from 'rxjs';
 
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+
 @Component({
+    standalone: true,
     selector: 'app-sidebar-cmp',
     templateUrl: './sidebar.component.html',
-    styleUrls: ['./sidebar.component.css']
+    styleUrls: ['./sidebar.component.css'],
+    imports: [
+        RouterLink, // <button routerLink="home"></button>
+        RouterLinkWithHref, // <a routerLink="home"></a>
+
+        AsyncPipe,
+
+        MatToolbarModule,
+        MatButtonModule,
+        MatSidenavModule,
+        MatIconModule,
+        MatListModule,
+    ],
 })
 export class SidebarComponent {
     isHandset$ = this.breakpointObserver.observe(Breakpoints.Handset)
