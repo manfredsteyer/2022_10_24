@@ -1,3 +1,14 @@
+<div class="form-group">
+  <label for="filterSelect">Previous Filters:</label>
+  <select [formControl]="selectedFilter" class="form-control" id="filterSelect">
+    <option
+      *ngFor="let filter of selectFilters$ | async"
+      [ngValue]="filter">
+      {{filter?.from}} - {{filter?.to}}
+    </option>
+  </select>
+</div>
+
 <form [formGroup]="filterForm">
   <div class="form-group">
     <label>From:</label>
@@ -15,11 +26,10 @@
   </div>
 
   <div class="form-group">
-    <button (click)="search()" [disabled]="!filterForm.valid"
+    <button (click)="triggerSearch()" [disabled]="!filterForm.valid"
       class="btn btn-default">
       Search
     </button>
-
     <ng-content select=".flight-filter-button"></ng-content>
     <ng-content select=".flight-filter-info"></ng-content>
   </div>
