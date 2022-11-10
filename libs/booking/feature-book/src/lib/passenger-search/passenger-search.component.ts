@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, Input, OnChanges } from '@angular/core';
 import { NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { PassengerStore } from './passenger.store';
 import { AsyncPipe, NgForOf, NgIf } from '@angular/common';
@@ -18,12 +18,14 @@ import { Passenger } from '@nx-example/booking/domain';
   ],
   providers: [PassengerStore],
 })
-export class PassengerSearchComponent {
+export class PassengerSearchComponent implements OnChanges {
   formGroup = inject(NonNullableFormBuilder).group({
     name: [''],
   });
   store = inject(PassengerStore);
   passengers$ = this.store.passengers$;
+
+  @Input() name = '';
 
   search(): void {
     this.store.search(this.formGroup.controls.name.getRawValue());
@@ -35,5 +37,9 @@ export class PassengerSearchComponent {
 
   upgrade(passenger: Passenger) {
     this.store.upgrade(passenger);
+  }
+
+  ngOnChanges(): void {
+    this.formGroup.controls.name.setValue(this.name);
   }
 }
