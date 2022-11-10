@@ -10,10 +10,20 @@
     <p>Bonus Miles: {{ passenger.bonusMiles }}</p>
     <p>Status: {{ passenger.passengerStatus }}</p>
     <div class="text-center">
-      <button class="btn btn-default" (click)="downgrade.emit()">
+      <button
+        class="btn btn-default"
+        data-testid="pc-downgrade"
+        (click)="downgrade.emit()"
+      >
         Downgrade
       </button>
-      <button class="btn btn-default" (click)="upgrade.emit()">Upgrade</button>
+      <button
+        class="btn btn-default"
+        data-testid="pc-upgrade"
+        (click)="upgrade.emit()"
+      >
+        Upgrade
+      </button>
     </div>
   </div>
 </div>
