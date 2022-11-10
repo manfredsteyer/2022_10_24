@@ -39,7 +39,7 @@ export class PassengerStore extends ComponentStore<PassengerState> {
     return i$.pipe(
       concatLatestFrom(() => this.query$),
       map((data) => data[1]),
-      tap((query) => this.search(query))
+      tap((query: string) => this.search(query))
     );
   });
 
