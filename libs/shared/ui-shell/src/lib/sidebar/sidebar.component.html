@@ -1,8 +1,12 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="(isHandset$ | async) === false">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false"
+  >
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
       <a mat-list-item routerLink="/">Home</a>
@@ -14,12 +18,10 @@
       <a mat-list-item routerLink="/luggage/checkin">Checkin Luggage</a>
       <a mat-list-item routerLink="/luggage/report-loss">Report Loss</a>
       <hr />
-
+      <p>Aktive Flüge: {{ flightCount$ | async }}</p>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-
     <ng-content></ng-content>
-
   </mat-sidenav-content>
 </mat-sidenav-container>
