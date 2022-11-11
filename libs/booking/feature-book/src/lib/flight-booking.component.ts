@@ -1,6 +1,8 @@
 import { Component } from "@angular/core";
 import { RouterLinkWithHref, RouterOutlet } from "@angular/router";
 
+// import { CheckinComponent } from '@nx-example/luggage/domain';
+
 @Component({
   standalone: true,
   selector: 'flight-booking',

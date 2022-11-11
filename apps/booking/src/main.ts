@@ -1,11 +1,6 @@
-import { enableProdMode } from '@angular/core';
-import { platformBrowser } from '@angular/platform-browser';
+import { loadManifest } from '@angular-architects/module-federation';
 
-import { environment } from './environments/environment';
-import { AppModule } from './app/app.module';
-
-if (environment.production) {
-  enableProdMode();
-}
-
-platformBrowser().bootstrapModule(AppModule);
+loadManifest("/assets/mf.manifest.json")
+  .catch(err => console.error(err))
+  .then(_ => import('./bootstrap'))
+  .catch(err => console.error(err));
