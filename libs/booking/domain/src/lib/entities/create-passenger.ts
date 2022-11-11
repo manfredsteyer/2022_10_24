@@ -9,6 +9,6 @@ const defaultPassenger: Passenger = {
   passengerStatus: 'B',
 };
 
-export function createPassenger(passenger: Partial<Passenger> = {}) {
+export function createPassenger(passenger: Partial<Passenger>) {
   return { ...defaultPassenger, id: id++, ...passenger };
 }

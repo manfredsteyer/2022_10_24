@@ -6,6 +6,9 @@ import { FlightCardComponent } from '@nx-example/booking/ui-common';
 import { CityValidator } from '@nx-example/shared/util-common';
 import { FlightSearchStore } from './flight-search.store';
 import { FlightFilter, FlightFilterStore } from './flight-filter.store';
+import { Store } from '@ngrx/store';
+import { flightSearchActions } from '../+state/flight-search.actions';
+import { flightSearchFeature } from '../+state/flight-search.reducer';
 
 @Component({
   standalone: true,
@@ -25,7 +28,8 @@ export class FlightSearchComponent {
   urgent = false;
 
   store = inject(FlightSearchStore);
-  flights$ = this.store.flights$;
+  globalStore = inject(Store);
+  flights$ = this.globalStore.select(flightSearchFeature.selectFlights);
 
   basket: { [id: number]: boolean } = {
     3: true,
@@ -38,7 +42,11 @@ export class FlightSearchComponent {
   search() {
     if (!this.from || !this.to) return;
 
-    this.store.search(this.from, this.to);
+    // this.store.search(this.from, this.to);
+
+    this.globalStore.dispatch(
+      flightSearchActions.search({ from: this.from, to: this.to })
+    );
   }
 
   delay(): void {

@@ -40,6 +40,15 @@
           "libs/booking/feature-book/**/*.html"
         ]
       }
+    },
+    "component-test": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "libs/booking/feature-book/cypress.config.ts",
+        "testingType": "component",
+        "skipServe": true,
+        "devServerTarget": "booking:build"
+      }
     }
   },
   "tags": [
